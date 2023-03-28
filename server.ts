@@ -1,4 +1,4 @@
-import app from "./src/index"
+import app from "./src/App"
 import * as dotenv from "dotenv"
 dotenv.config({path: './config.env'});
 import mongoose from "mongoose";
@@ -18,5 +18,5 @@ mongoose.connect(DB, {
 
 const port = process.env.PORT;
 app.listen(port, () => {
-  console.log(`App running on port ${port}`);
+  console.log(`App running on http://localhost:${port}`);
 });
