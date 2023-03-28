@@ -1,15 +1,15 @@
-import { Error } from "mongoose"
 
-class AppErr {
+
+class AppErr implements Error {
 
     public isOperational: boolean
     public message: string
     public statusCode: number
-    public status: string
+    public name: string
     
 
-    constructor(status: string, statusCode: number) {
-        this.status = status
+    constructor(name:string , statusCode: number) {
+        this.name = name
         this.statusCode = statusCode
         this.message = `${statusCode}`.startsWith("4") ? "fail" : "error"
         this.isOperational = true;

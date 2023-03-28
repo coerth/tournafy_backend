@@ -1,0 +1,119 @@
+[2023-03-28T15:40:29.458] [DEBUG] default - Some debug messages
+[2023-03-28T15:40:29.462] [INFO] default - Some info messages
+[2023-03-28T15:40:29.463] [WARN] default - Some warning messages
+[2023-03-28T15:40:29.463] [ERROR] default - Some error messages
+[2023-03-28T15:40:29.464] [FATAL] default - Some fatal messages
+[2023-03-28T15:43:25.435] [DEBUG] default - AppErr {
+  status: "Can't find /api/v1//player on this server",
+  name: "Can't find /api/v1//player on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
+[2023-03-28T15:44:28.929] [DEBUG] default - Some debug messages
+[2023-03-28T15:44:28.932] [INFO] default - Some info messages
+[2023-03-28T15:44:28.932] [WARN] default - Some warning messages
+[2023-03-28T15:44:28.932] [ERROR] default - Some error messages
+[2023-03-28T15:44:28.933] [FATAL] default - Some fatal messages
+[2023-03-28T15:44:36.207] [DEBUG] default - AppErr {
+  name: "Can't find /api/v1//player on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
+[2023-03-28T15:45:14.866] [DEBUG] default - Error: Player validation failed: email: A player must have a email
+    at ValidationError.inspect (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:790:19)
+    at inspect (node:internal/util/inspect:350:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2241:40)
+    at Object.format (node:internal/util/inspect:2098:10)
+    at basicLayout (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\layouts.js:65:52)
+    at app (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\appenders\file.js:98:23)
+    at C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    email: ValidatorError: A player must have a email
+        at validate (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\schematype.js:1347:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\schematype.js:1331:7)
+        at C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\document.js:2865:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Player validation failed'
+}
+[2023-03-28T15:46:06.631] [DEBUG] default - Some debug messages
+[2023-03-28T15:46:06.633] [INFO] default - Some info messages
+[2023-03-28T15:46:06.634] [WARN] default - Some warning messages
+[2023-03-28T15:46:06.634] [ERROR] default - Some error messages
+[2023-03-28T15:46:06.635] [FATAL] default - Some fatal messages
+[2023-03-28T15:46:10.545] [DEBUG] default - Some debug messages
+[2023-03-28T15:46:10.548] [INFO] default - Some info messages
+[2023-03-28T15:46:10.548] [WARN] default - Some warning messages
+[2023-03-28T15:46:10.548] [ERROR] default - Some error messages
+[2023-03-28T15:46:10.549] [FATAL] default - Some fatal messages
+[2023-03-28T15:46:14.048] [DEBUG] default - Error: Player validation failed: email: A player must have a email
+    at ValidationError.inspect (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:790:19)
+    at inspect (node:internal/util/inspect:350:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2241:40)
+    at Object.format (node:internal/util/inspect:2098:10)
+    at basicLayout (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\layouts.js:65:52)
+    at app (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\appenders\file.js:98:23)
+    at C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    email: ValidatorError: A player must have a email
+        at validate (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\schematype.js:1347:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\schematype.js:1331:7)
+        at C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\document.js:2865:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Player validation failed'
+}
+[2023-03-28T15:46:52.124] [DEBUG] default - Some debug messages
+[2023-03-28T15:46:52.126] [INFO] default - Some info messages
+[2023-03-28T15:46:52.127] [WARN] default - Some warning messages
+[2023-03-28T15:46:52.127] [ERROR] default - Some error messages
+[2023-03-28T15:46:52.127] [FATAL] default - Some fatal messages
+[2023-03-28T15:46:55.847] [ERROR] default - Error: Player validation failed: email: A player must have a email
+    at ValidationError.inspect (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:790:19)
+    at inspect (node:internal/util/inspect:350:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2241:40)
+    at Object.format (node:internal/util/inspect:2098:10)
+    at basicLayout (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\layouts.js:65:52)
+    at app (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\appenders\file.js:98:23)
+    at C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    email: ValidatorError: A player must have a email
+        at validate (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\schematype.js:1347:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\schematype.js:1331:7)
+        at C:\Users\Morten\Documents\GitHub\Typescript semester project\tournafy backend\node_modules\mongoose\lib\document.js:2865:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Player validation failed'
+}

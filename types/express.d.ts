@@ -1,13 +1,12 @@
-/* namespace Express {
+/*  namespace Express {
     interface Request {
       requestTime?: string;
     }
   }
   
-  interface Error {
+   interface Error {
     statusCode: number;
     status: string;
     isOperational?: boolean;
   }
-
-   */
+ */
