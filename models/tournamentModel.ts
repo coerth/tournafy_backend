@@ -24,6 +24,10 @@ const tournamentSchema = new mongoose.Schema({
         ref: "Match",
         required: [true, "A match must be assigned to a tournament"]
     }],
+    teams: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Team"
+    }],
 })
 
 tournamentSchema.pre(/^find/, function() {

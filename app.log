@@ -122,3 +122,20 @@
 [2023-03-28T15:50:16.454] [WARN] default - Some warning messages
 [2023-03-28T15:50:16.454] [ERROR] default - Some error messages
 [2023-03-28T15:50:16.454] [FATAL] default - Some fatal messages
+[2023-04-06T11:21:58.682] [DEBUG] default - Some debug messages
+[2023-04-06T11:21:58.685] [INFO] default - Some info messages
+[2023-04-06T11:21:58.685] [WARN] default - Some warning messages
+[2023-04-06T11:21:58.685] [ERROR] default - Some error messages
+[2023-04-06T11:21:58.685] [FATAL] default - Some fatal messages
+[2023-04-06T11:22:05.355] [ERROR] default - AppErr {
+  name: "Can't find / on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
+[2023-04-06T11:22:05.405] [ERROR] default - AppErr {
+  name: "Can't find /favicon.ico on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
