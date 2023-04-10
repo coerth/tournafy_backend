@@ -19,11 +19,11 @@ const teamSchema = new mongoose.Schema({
         select: false
     },
     //player: Array
-    players: {
+    players: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Player",
         required: [true, "A player must be assigned to a team"]
-    },
+    }],
     slug: String,
 },{
         toJSON: {virtuals: true},

@@ -15,7 +15,7 @@ export const getTournaments = catchAsync( async (req: Request, res: Response) =>
     .json({
         status: "success",
         length: data.length,
-        tournament: data
+        tournaments: data
     })
 });
 

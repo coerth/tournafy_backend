@@ -139,3 +139,91 @@
   message: 'fail',
   isOperational: true
 }
+[2023-04-10T14:20:06.728] [DEBUG] default - Some debug messages
+[2023-04-10T14:20:06.731] [INFO] default - Some info messages
+[2023-04-10T14:20:06.731] [WARN] default - Some warning messages
+[2023-04-10T14:20:06.732] [ERROR] default - Some error messages
+[2023-04-10T14:20:06.732] [FATAL] default - Some fatal messages
+[2023-04-10T14:20:10.258] [ERROR] default - AppErr {
+  name: "Can't find / on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
+[2023-04-10T14:25:11.583] [DEBUG] default - Some debug messages
+[2023-04-10T14:25:11.585] [INFO] default - Some info messages
+[2023-04-10T14:25:11.586] [WARN] default - Some warning messages
+[2023-04-10T14:25:11.586] [ERROR] default - Some error messages
+[2023-04-10T14:25:11.587] [FATAL] default - Some fatal messages
+[2023-04-10T14:25:22.752] [DEBUG] default - Some debug messages
+[2023-04-10T14:25:22.755] [INFO] default - Some info messages
+[2023-04-10T14:25:22.755] [WARN] default - Some warning messages
+[2023-04-10T14:25:22.755] [ERROR] default - Some error messages
+[2023-04-10T14:25:22.756] [FATAL] default - Some fatal messages
+[2023-04-10T14:25:31.976] [DEBUG] default - Some debug messages
+[2023-04-10T14:25:31.979] [INFO] default - Some info messages
+[2023-04-10T14:25:31.979] [WARN] default - Some warning messages
+[2023-04-10T14:25:31.980] [ERROR] default - Some error messages
+[2023-04-10T14:25:31.980] [FATAL] default - Some fatal messages
+[2023-04-10T14:26:30.187] [ERROR] default - AppErr {
+  name: "Can't find /team on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
+[2023-04-10T14:29:04.454] [DEBUG] default - Some debug messages
+[2023-04-10T14:29:04.457] [INFO] default - Some info messages
+[2023-04-10T14:29:04.457] [WARN] default - Some warning messages
+[2023-04-10T14:29:04.458] [ERROR] default - Some error messages
+[2023-04-10T14:29:04.458] [FATAL] default - Some fatal messages
+[2023-04-10T14:29:32.218] [DEBUG] default - Some debug messages
+[2023-04-10T14:29:32.220] [INFO] default - Some info messages
+[2023-04-10T14:29:32.221] [WARN] default - Some warning messages
+[2023-04-10T14:29:32.221] [ERROR] default - Some error messages
+[2023-04-10T14:29:32.222] [FATAL] default - Some fatal messages
+[2023-04-10T14:30:20.043] [DEBUG] default - Some debug messages
+[2023-04-10T14:30:20.045] [INFO] default - Some info messages
+[2023-04-10T14:30:20.045] [WARN] default - Some warning messages
+[2023-04-10T14:30:20.046] [ERROR] default - Some error messages
+[2023-04-10T14:30:20.046] [FATAL] default - Some fatal messages
+[2023-04-10T14:35:23.526] [DEBUG] default - Some debug messages
+[2023-04-10T14:35:23.528] [INFO] default - Some info messages
+[2023-04-10T14:35:23.529] [WARN] default - Some warning messages
+[2023-04-10T14:35:23.529] [ERROR] default - Some error messages
+[2023-04-10T14:35:23.530] [FATAL] default - Some fatal messages
+[2023-04-10T14:36:41.990] [DEBUG] default - Some debug messages
+[2023-04-10T14:36:41.992] [INFO] default - Some info messages
+[2023-04-10T14:36:41.993] [WARN] default - Some warning messages
+[2023-04-10T14:36:41.993] [ERROR] default - Some error messages
+[2023-04-10T14:36:41.994] [FATAL] default - Some fatal messages
+[2023-04-10T14:42:41.250] [DEBUG] default - Some debug messages
+[2023-04-10T14:42:41.253] [INFO] default - Some info messages
+[2023-04-10T14:42:41.253] [WARN] default - Some warning messages
+[2023-04-10T14:42:41.254] [ERROR] default - Some error messages
+[2023-04-10T14:42:41.254] [FATAL] default - Some fatal messages
+[2023-04-10T14:42:55.316] [DEBUG] default - Some debug messages
+[2023-04-10T14:42:55.320] [INFO] default - Some info messages
+[2023-04-10T14:42:55.320] [WARN] default - Some warning messages
+[2023-04-10T14:42:55.321] [ERROR] default - Some error messages
+[2023-04-10T14:42:55.321] [FATAL] default - Some fatal messages
+[2023-04-10T14:43:02.667] [DEBUG] default - Some debug messages
+[2023-04-10T14:43:02.669] [INFO] default - Some info messages
+[2023-04-10T14:43:02.670] [WARN] default - Some warning messages
+[2023-04-10T14:43:02.670] [ERROR] default - Some error messages
+[2023-04-10T14:43:02.671] [FATAL] default - Some fatal messages
+[2023-04-10T14:43:48.965] [ERROR] default - AppErr {
+  name: "Can't find /api/v1/function()%20%7B%20%20%20%20[native%20code]%7D on this server",
+  statusCode: 404,
+  message: 'fail',
+  isOperational: true
+}
+[2023-04-10T14:46:22.698] [DEBUG] default - Some debug messages
+[2023-04-10T14:46:22.700] [INFO] default - Some info messages
+[2023-04-10T14:46:22.700] [WARN] default - Some warning messages
+[2023-04-10T14:46:22.701] [ERROR] default - Some error messages
+[2023-04-10T14:46:22.701] [FATAL] default - Some fatal messages
+[2023-04-10T15:28:26.093] [DEBUG] default - Some debug messages
+[2023-04-10T15:28:26.097] [INFO] default - Some info messages
+[2023-04-10T15:28:26.097] [WARN] default - Some warning messages
+[2023-04-10T15:28:26.098] [ERROR] default - Some error messages
+[2023-04-10T15:28:26.098] [FATAL] default - Some fatal messages

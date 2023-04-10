@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv'
 dotenv.config({path:'./config.env'});
 import express = require("express");
 import morgan = require('morgan');
+var cors = require('cors')
 import { Request, Response, NextFunction } from 'express';
 import {globalErrorHandler} from "../handlers/errorHandler"
 import AppError from "../utility/AppError"
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === 'development') {
   console.log("Development mode...");
 }
 
+app.use(cors())
 app.use(express.json()); // Body parser for JSON data
 app.use(express.static(`${__dirname}/public`)); // Serve static files
 

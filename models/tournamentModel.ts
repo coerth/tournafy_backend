@@ -14,9 +14,11 @@ const tournamentSchema = new mongoose.Schema({
         enum: ["Elimination", "Round Robin"],
         message: "tournament type must be Elimination or Round Robin"
     }, maxTeams: {
-        type: Number
+        type: Number,
+        required: [true, "Tournament must have maximum teams"]
     }, minTeams: {
-        type: Number
+        type: Number,
+        required: [true, "Tournament must have minimum teams"]
     },
     //player: Array
     matches: [{
@@ -38,9 +40,24 @@ tournamentSchema.pre(/^find/, function() {
 }
 )
 
+tournamentSchema.pre(/^find/, function() {
+    this.populate({
+        path: "teams",
+        select: "-__v -createdAt",
+    })
+}
+)
+
 tournamentSchema.pre(/^find/, function(next) {
     this.populate({
         path: "matches"
+    })
+    next()
+})
+
+tournamentSchema.pre(/^find/, function(next) {
+    this.populate({
+        path: "teams"
     })
     next()
 })
