@@ -607,3 +607,8 @@
 [2023-04-26T11:48:17.677] [WARN] default - Some warning messages
 [2023-04-26T11:48:17.677] [ERROR] default - Some error messages
 [2023-04-26T11:48:17.679] [FATAL] default - Some fatal messages
+[2023-04-26T11:48:31.325] [DEBUG] default - Some debug messages
+[2023-04-26T11:48:31.331] [INFO] default - Some info messages
+[2023-04-26T11:48:31.332] [WARN] default - Some warning messages
+[2023-04-26T11:48:31.333] [ERROR] default - Some error messages
+[2023-04-26T11:48:31.334] [FATAL] default - Some fatal messages

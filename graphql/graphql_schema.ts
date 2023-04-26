@@ -10,6 +10,20 @@ const typeDefs = `#graphql
     phone: Int 
   }
   
+  type Team {
+    _id: ID!
+    name: String!
+    players: [Player]
+  }
+
+  type Match {
+    location: String!
+    date: String
+    winner: Team
+    score: [Int]
+    stage: Int!
+    teams: [Team!]!
+  }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
@@ -18,6 +32,10 @@ const typeDefs = `#graphql
   type Query {
     players: [Player!]!
     player(id: ID!): Player!
+    teams: [Team!]!
+    team(id: ID!): Team!
+    matches: [Match!]!
+    match: Match!
   }
 
 `;

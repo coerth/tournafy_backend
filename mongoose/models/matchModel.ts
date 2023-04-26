@@ -4,16 +4,19 @@ const matchSchema = new mongoose.Schema({
     location: {
         type: String,
         required: [true, "A match must have a location"],
-    }, date: {
+    }, 
+    date: {
         type: Date,
         default: Date.now(),    
     },
     winner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Team",
-    }, score: [{
+    }, 
+    score: [{
         type: Number
-    }], stage: {
+    }], 
+    stage: {
         type: Number,
         required: [true, "A match must have a stage"],
     },
