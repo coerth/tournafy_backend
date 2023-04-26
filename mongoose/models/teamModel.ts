@@ -40,21 +40,17 @@ teamSchema.pre(/^find/, function() {
         path: "players",
         select: "-__v -createdAt",
     })
-}
-)
 
-teamSchema.pre(/^find/, function() {
     this.populate({
         path: "captain",
     })
 }
 )
 
-teamSchema.pre(/^find/, function(next) {
+teamSchema.post("save", function(doc, next){
     this.populate({
-        path: "players"
-    })
-    next()
+      path: "players"})
+      .then( () => next())
 })
 
 const Team = mongoose.model("Team", teamSchema)

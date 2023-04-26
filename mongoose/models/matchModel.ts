@@ -35,22 +35,25 @@ matchSchema.pre(/^find/, function() {
         path: "teams",
         select: "-__v -createdAt",
     })
-}
-)
 
-matchSchema.pre(/^find/, function(next) {
-    this.populate({
-        path: "teams"
-    })
-    next()
-})
-
-matchSchema.pre(/^find/, function(next) {
     this.populate({
         path: "winner"
     })
-    next()
+}
+)
+
+matchSchema.post("save", function(doc, next){
+    this.populate({
+      path: "teams"})
+      .then( () => next())
 })
+
+matchSchema.post("save", function(doc, next){
+    this.populate({
+      path: "winner"})
+      .then( () => next())
+})
+
 
 const Match = mongoose.model("Match", matchSchema)
 

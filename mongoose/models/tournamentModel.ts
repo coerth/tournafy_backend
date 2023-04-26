@@ -32,34 +32,29 @@ const tournamentSchema = new mongoose.Schema({
     }],
 })
 
-tournamentSchema.pre(/^find/, function() {
-    this.populate({
-        path: "matches",
-        select: "-__v -createdAt",
-    })
-}
-)
 
 tournamentSchema.pre(/^find/, function() {
     this.populate({
         path: "teams",
         select: "-__v -createdAt",
     })
-}
-)
 
-tournamentSchema.pre(/^find/, function(next) {
     this.populate({
         path: "matches"
     })
-    next()
+}
+)
+
+tournamentSchema.post("save", function(doc, next){
+      this.populate({
+        path: "matches"})
+        .then( () => next())
 })
 
-tournamentSchema.pre(/^find/, function(next) {
-    this.populate({
-        path: "teams"
-    })
-    next()
+tournamentSchema.post("save", function(doc, next){
+      this.populate({
+        path: "teams"})
+        .then( () => next())
 })
 
 const Tournament = mongoose.model("Tournament", tournamentSchema)
