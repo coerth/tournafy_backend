@@ -2,6 +2,7 @@
 import PlayerModel from '../../mongoose/models/playerModel';
 import TeamModel from "../../mongoose/models/teamModel"
 import MatchModel from "../../mongoose/models/matchModel"
+import TournamentModel from "../../mongoose/models/tournamentModel"
 import {Args} from '../../types/types'
 
 export default {
@@ -10,5 +11,7 @@ export default {
     teams: async (_parent:never) => TeamModel.find(),
     team: async  (_parent:never, { id }:Args) => TeamModel.findById(id),
     matches: async (_parent:never) => MatchModel.find(),
-    match: async  (_parent:never, { id }:Args) => MatchModel.findById(id)
+    match: async  (_parent:never, { id }:Args) => MatchModel.findById(id),
+    tournaments: async (_parent:never) => TournamentModel.find(),
+    tournament: async  (_parent:never, { id }:Args) => TournamentModel.findById(id)
 }

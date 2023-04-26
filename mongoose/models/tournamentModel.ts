@@ -13,10 +13,12 @@ const tournamentSchema = new mongoose.Schema({
         type: String,
         enum: ["Elimination", "Round Robin"],
         message: "tournament type must be Elimination or Round Robin"
-    }, maxTeams: {
+    }, 
+    maxTeams: {
         type: Number,
         required: [true, "Tournament must have maximum teams"]
-    }, minTeams: {
+    }, 
+    minTeams: {
         type: Number,
         required: [true, "Tournament must have minimum teams"]
     },

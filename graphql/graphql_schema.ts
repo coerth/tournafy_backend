@@ -17,12 +17,24 @@ const typeDefs = `#graphql
   }
 
   type Match {
+    _id: ID!
     location: String!
     date: String
     winner: Team
     score: [Int]
     stage: Int!
     teams: [Team!]!
+  }
+
+  type Tournament {
+    _id: ID!
+    startDate: String
+    endDate: String
+    tournamentType: String!
+    maxTeams: Int!
+    minTeams: Int!
+    matches: [Match!]!
+    teams: [Team]
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -36,6 +48,8 @@ const typeDefs = `#graphql
     team(id: ID!): Team!
     matches: [Match!]!
     match: Match!
+    tournaments: [Tournament!]!
+    tournament: Tournament!
   }
 
 `;

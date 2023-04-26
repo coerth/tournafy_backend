@@ -612,3 +612,39 @@
 [2023-04-26T11:48:31.332] [WARN] default - Some warning messages
 [2023-04-26T11:48:31.333] [ERROR] default - Some error messages
 [2023-04-26T11:48:31.334] [FATAL] default - Some fatal messages
+[2023-04-26T12:03:41.366] [DEBUG] default - Some debug messages
+[2023-04-26T12:03:41.373] [INFO] default - Some info messages
+[2023-04-26T12:03:41.374] [WARN] default - Some warning messages
+[2023-04-26T12:03:41.375] [ERROR] default - Some error messages
+[2023-04-26T12:03:41.377] [FATAL] default - Some fatal messages
+[2023-04-26T12:03:48.418] [ERROR] default - AppErr {
+  isOperational: true,
+  message: 'fail',
+  statusCode: 404,
+  name: "Can't find /favicon.ico on this server"
+}
+[2023-04-26T12:07:19.998] [DEBUG] default - Some debug messages
+[2023-04-26T12:07:20.004] [INFO] default - Some info messages
+[2023-04-26T12:07:20.005] [WARN] default - Some warning messages
+[2023-04-26T12:07:20.009] [ERROR] default - Some error messages
+[2023-04-26T12:07:20.010] [FATAL] default - Some fatal messages
+[2023-04-26T12:07:38.649] [DEBUG] default - Some debug messages
+[2023-04-26T12:07:38.654] [INFO] default - Some info messages
+[2023-04-26T12:07:38.655] [WARN] default - Some warning messages
+[2023-04-26T12:07:38.656] [ERROR] default - Some error messages
+[2023-04-26T12:07:38.657] [FATAL] default - Some fatal messages
+[2023-04-26T12:09:03.946] [DEBUG] default - Some debug messages
+[2023-04-26T12:09:03.950] [INFO] default - Some info messages
+[2023-04-26T12:09:03.951] [WARN] default - Some warning messages
+[2023-04-26T12:09:03.952] [ERROR] default - Some error messages
+[2023-04-26T12:09:03.954] [FATAL] default - Some fatal messages
+[2023-04-26T12:09:52.645] [DEBUG] default - Some debug messages
+[2023-04-26T12:09:52.650] [INFO] default - Some info messages
+[2023-04-26T12:09:52.651] [WARN] default - Some warning messages
+[2023-04-26T12:09:52.652] [ERROR] default - Some error messages
+[2023-04-26T12:09:52.653] [FATAL] default - Some fatal messages
+[2023-04-26T12:11:05.030] [DEBUG] default - Some debug messages
+[2023-04-26T12:11:05.035] [INFO] default - Some info messages
+[2023-04-26T12:11:05.036] [WARN] default - Some warning messages
+[2023-04-26T12:11:05.037] [ERROR] default - Some error messages
+[2023-04-26T12:11:05.039] [FATAL] default - Some fatal messages
