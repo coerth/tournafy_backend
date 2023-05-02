@@ -36,7 +36,7 @@ export type Tournament = {
 
 export type Args = {
     id: string;
-    input: PlayerInput | TeamInput;
+    input: PlayerInput | TeamInput | MatchInput | TournamentInput;
 };
 
 export type PlayerInput = {
@@ -50,4 +50,22 @@ export type TeamInput = {
     name?: string,
     captain: Player,
     players?: Player[]
+}
+
+export type MatchInput = {
+    location: string,
+    winner: Team,
+    score: number[],
+    stage: number
+    teams: Team[]
+}
+
+export type TournamentInput = {
+    startDate: Date,
+    endDate: Date,
+    tournamentType: string,
+    maxTeams: number,
+    minTeams: number,
+    matches: Match[],
+    teams: Team[]
 }

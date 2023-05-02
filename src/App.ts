@@ -18,7 +18,7 @@ import Query from '.././graphql/resolvers/query';
 import Mutation from '../graphql/resolvers/Mutation';
 import typeDefs from '../graphql/graphql_schema';
 import cors from 'cors'
-
+import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
 
 
 const app = express();
@@ -30,7 +30,9 @@ if (process.env.NODE_ENV === 'development') {
 
 const httpServer = http.createServer(app);
 const server: ApolloServer = new ApolloServer({
-  typeDefs,
+  typeDefs: [
+    typeDefs,
+  ],
   resolvers: {
     Query,
     Mutation

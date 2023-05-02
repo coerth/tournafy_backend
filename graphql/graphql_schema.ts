@@ -60,6 +60,12 @@ const typeDefs = `#graphql
     createTeam(input: TeamInput!): Team
     deleteTeam(id: ID!): Boolean
     updateTeam(id: ID!, input: TeamInput!): Team
+    createMatch(input: MatchInput!): Match
+    deleteMatch(id: ID!): Boolean
+    updateMatch(id: ID!, input: MatchInput!): Match
+    createTournament(input: TournamentInput!): Tournament
+    deleteTournament(id: ID!): Boolean
+    updateTournament(id: ID!, input: TournamentInput!): Tournament
   }
 
   input PlayerInput {
@@ -67,12 +73,30 @@ const typeDefs = `#graphql
     gamerTag: String!
     email: String
     phone: Int
-}
+  }
 
   input TeamInput {
   name: String,
   captain: ID!,
   players: [ID]
+  }
+
+  input MatchInput {
+    location: String!,
+    winner: ID,
+    score: [Int],
+    stage: Int
+    teams: [ID]
+  }
+
+  input TournamentInput {
+    startDate: String,
+    endDate: String,
+    tournamentType: String!,
+    maxTeams: Int,
+    minTeams: Int,
+    matches: [ID],
+    teams: [ID]
 }
 
 `;
