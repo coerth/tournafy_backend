@@ -57,6 +57,9 @@ const typeDefs = `#graphql
     createPlayer(input: PlayerInput!): Player
     deletePlayer(id: ID!): Boolean
     updatePlayer(id: ID!, input: PlayerInput!): Player
+    createTeam(input: TeamInput!): Team
+    deleteTeam(id: ID!): Boolean
+    updateTeam(id: ID!, input: TeamInput!): Team
   }
 
   input PlayerInput {
@@ -64,6 +67,12 @@ const typeDefs = `#graphql
     gamerTag: String!
     email: String
     phone: Int
+}
+
+  input TeamInput {
+  name: String,
+  captain: ID!,
+  players: [ID]
 }
 
 `;
