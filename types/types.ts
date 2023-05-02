@@ -36,11 +36,12 @@ export type Tournament = {
 
 export type Args = {
     id: string;
-    // input: PersonInput | Address | Mechanic;
+    input: PlayerInput;
 };
 
-// export type PersonInput = {
-//     name: string,
-//     age?: number,
-//     address?: string
-// }
+export type PlayerInput = {
+    name?: string,
+    gamerTag: string,
+    email?: string,
+    phone?: number
+}

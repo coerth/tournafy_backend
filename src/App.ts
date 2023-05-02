@@ -15,6 +15,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import http from 'http';
 import Query from '.././graphql/resolvers/query';
+import Mutation from '.././graphql/resolvers/Mutation';
 import typeDefs from '../graphql/graphql_schema';
 import cors from 'cors'
 
@@ -31,7 +32,8 @@ const httpServer = http.createServer(app);
 const server: ApolloServer = new ApolloServer({
   typeDefs,
   resolvers: {
-    Query
+    Query,
+    Mutation
   },
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });

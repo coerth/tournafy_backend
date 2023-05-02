@@ -53,6 +53,19 @@ const typeDefs = `#graphql
     tournament: Tournament!
   }
 
+  type Mutation{
+    createPlayer(input: PlayerInput!): Player
+    deletePlayer(id: ID!): Boolean
+    updatePlayer(id: ID!, input: PlayerInput!): Player
+  }
+
+  input PlayerInput {
+    name: String
+    gamerTag: String!
+    email: String
+    phone: Int
+}
+
 `;
 
 export default typeDefs;
