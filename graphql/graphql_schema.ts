@@ -13,6 +13,7 @@ const typeDefs = `#graphql
   type Team {
     _id: ID!
     name: String!
+    captain: Player
     players: [Player]
   }
 
