@@ -5,7 +5,7 @@ const teamSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "A team must have a name"],
-        maxLength: [15, "A team must have less or equal to 15 characters"],
+        maxLength: [40, "A team must have less or equal to 15 characters"],
         minLength: [4, "A team must have more or equal to 4 characters"]
     },
     captain: {
@@ -50,6 +50,12 @@ teamSchema.pre(/^find/, function() {
 teamSchema.post("save", function(doc, next){
     this.populate({
       path: "players"})
+      .then( () => next())
+})
+
+teamSchema.post("save", function(doc, next){
+    this.populate({
+      path: "captain"})
       .then( () => next())
 })
 
