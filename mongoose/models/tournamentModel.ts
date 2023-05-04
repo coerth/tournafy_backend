@@ -1,18 +1,27 @@
 import mongoose from "mongoose";
 
 const tournamentSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, "Tournament must have a name"],
+        maxLength: [40, "A tournament name must have less or equal to 40 characters"],
+        minLength: [4, "A tournament name must have more or equal to 4 characters"]
+    },
     startDate: {
-        type: Date,
+        type: Number,
         default: Date.now(),
+        maxLength: [40, "A tournament name must have less or equal to 40 characters"]
     },
     endDate: {
-        type: Date,
+        type: Number,
         default: Date.now(),
+        maxLength: [40, "A tournament name must have less or equal to 40 characters"]
     },
     tournamentType: {
         type: String,
         enum: ["Elimination", "Round Robin"],
-        message: "tournament type must be Elimination or Round Robin"
+        message: "tournament type must be Elimination or Round Robin",
+        default: "Elimination"
     }, 
     maxTeams: {
         type: Number,
@@ -26,7 +35,6 @@ const tournamentSchema = new mongoose.Schema({
     matches: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Match",
-        required: [true, "A match must be assigned to a tournament"]
     }],
     teams: [{
         type: mongoose.Schema.Types.ObjectId,

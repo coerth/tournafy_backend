@@ -29,6 +29,7 @@ const typeDefs = `#graphql
 
   type Tournament {
     _id: ID!
+    name: String
     startDate: String
     endDate: String
     tournamentType: String!
@@ -90,11 +91,12 @@ const typeDefs = `#graphql
   }
 
   input TournamentInput {
+    name: String,
     startDate: String,
     endDate: String,
-    tournamentType: String!,
+    tournamentType: String,
     maxTeams: Int,
-    minTeams: Int,
+    minTeams: Int!,
     matches: [ID],
     teams: [ID]
 }

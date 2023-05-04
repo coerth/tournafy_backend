@@ -4,15 +4,14 @@ import TournamentModel from '../../mongoose/models/tournamentModel'
 
 export default {
     createTournament: async (_parent:never, { input }: Args) => {
-        if('tournamentType' in input){
+        if('minTeams' in input){
           let newTournament: Tournament = {
-            startDate: input.startDate,
-            endDate: input.endDate,
-            tournamentType: input.tournamentType,
+            name: input.name,
+            startDate: input.startDate ? input.startDate : Date.now(),
+            endDate: input.endDate ? input.endDate : Date.now(),
+            tournamentType: input.tournamentType ? input.tournamentType : "Elimination",
             maxTeams: input.maxTeams,
             minTeams: input.minTeams,
-            matches: input.matches,
-            teams: input.teams
           };
           let createdTournament = await TournamentModel.create(newTournament)
           return createdTournament;
@@ -28,7 +27,7 @@ export default {
         return true;
     },
     updateTournament: async (_parent: never, { id, input }:Args) => {
-        if('tournamentType' in input){
+        if('minTeams' in input){
         let tournament = await TournamentModel.findByIdAndUpdate(id, input, {
             new:true,
             runValidators: true
