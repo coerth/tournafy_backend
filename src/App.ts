@@ -19,6 +19,10 @@ import Mutation from '../graphql/resolvers/Mutation';
 import typeDefs from '../graphql/graphql_schema';
 import cors from 'cors'
 import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
+import {Jwt} from "jsonwebtoken"
+import userRouter from '../mongoose/routes/userRoute';
+
+//JWT THINGS
 
 
 const app = express();
@@ -54,6 +58,7 @@ app.use("/api/v1/player", playerRouter)
 app.use("/api/v1/team", teamRouter)
 app.use("/api/v1/match", matchRouter)
 app.use("/api/v1/tournament", tournamentRouter)
+app.use("/api/v1/user", userRouter)
 
 
 app.all("*", (req:Request, res:Response, next:NextFunction) => {

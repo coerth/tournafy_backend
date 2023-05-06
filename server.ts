@@ -19,5 +19,6 @@ app.listen(port, () => {
   console.log(`Team Api running on port http://localhost:${port}/api/v1/team`);
   console.log(`Match Api running on port http://localhost:${port}/api/v1/match`);
   console.log(`Tournament Api running on port http://localhost:${port}/api/v1/tournament`);
+  console.log(`User Api running on port http://localhost:${port}/api/v1/user`);
 
 });

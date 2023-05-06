@@ -1,6 +1,7 @@
 import express from "express";
 import {getPlayers, getPlayer, updatePlayer ,deletePlayer, createPlayer} from "../controllers/playerController"
 
+
 const playerRouter = express.Router()
 
 playerRouter.route("/").get(getPlayers).post(createPlayer)

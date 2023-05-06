@@ -34,10 +34,17 @@ export type Tournament = {
     teams?: Team[]
 }
 
+export type User = {
+    _id?: string,
+    fullName: string,
+    email: string,
+    hash_password?: string
+}
+
 
 export type Args = {
     id: string;
-    input: PlayerInput | TeamInput | MatchInput | TournamentInput;
+    input: PlayerInput | TeamInput | MatchInput | TournamentInput | UserInput;
 };
 
 export type PlayerInput = {
@@ -70,4 +77,15 @@ export type TournamentInput = {
     minTeams: number,
     matches: Match[],
     teams: Team[]
+}
+
+export type UserInput = {
+    fullName: string,
+    email: string,
+    password: string
+}
+
+export type SignInInput = {
+    email: string,
+    password: string
 }

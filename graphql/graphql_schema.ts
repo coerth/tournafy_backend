@@ -27,6 +27,12 @@ const typeDefs = `#graphql
     teams: [Team!]!
   }
 
+  type User {
+    _id: ID
+    fullName: String!
+    email: String
+  }
+
   type Tournament {
     _id: ID!
     name: String
@@ -37,6 +43,10 @@ const typeDefs = `#graphql
     minTeams: Int!
     matches: [Match!]!
     teams: [Team]
+  }
+
+  type JWT {
+    token: String!
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -67,6 +77,8 @@ const typeDefs = `#graphql
     createTournament(input: TournamentInput!): Tournament
     deleteTournament(id: ID!): Boolean
     updateTournament(id: ID!, input: TournamentInput!): Tournament
+    register(input: UserInput!): User
+    sign_in(input: SignInInput!): JWT
   }
 
   input PlayerInput {
@@ -99,6 +111,17 @@ const typeDefs = `#graphql
     minTeams: Int!,
     matches: [ID],
     teams: [ID]
+}
+
+input UserInput {
+  fullName: String!,
+  email: String!,
+  password: String!
+}
+
+input SignInInput {
+  email: String!,
+  password: String!
 }
 
 `;
