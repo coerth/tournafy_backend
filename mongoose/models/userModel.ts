@@ -35,13 +35,13 @@ const userSchema = new mongoose.Schema({
   },
 });
 
- userSchema.method("comparePassword", function comparePassword(password) {
+/*  userSchema.method("comparePassword", function comparePassword(password) {
     return bcrypt.compareSync(password, this.hash_password)  
 })
 
 userSchema.method("isAdmin", function isAdmin() {
     return this.role == "Admin"
-}) 
+})  */
 
 
 
