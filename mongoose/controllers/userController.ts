@@ -7,6 +7,8 @@ import { Request, Response, NextFunction } from "express";
 import { User } from "../../types/types";
 import { PassThrough } from "stream";
 import * as dotenv from "dotenv"
+import AppError from "../../utility/AppError"
+
 
 
 
@@ -53,11 +55,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
   
   if(!user || !bcrypt.compareSync(req.body.password, user.hash_password? user.hash_password : ""))
   {
-    return res
-          .status(401)
-          .json({
-            message: "Authentication failed. Invalid user or password.",
-          });
+    throw new AppError("Authentication failed. Invalid user or password.", 401)
   }
   else{
     return res
