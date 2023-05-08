@@ -1,4 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
+import Team from "./teamModel";
+import { ObjectID } from "graphql-scalars/typings/mocks";
 
 const playerSchema = new mongoose.Schema({
     name: {
@@ -30,6 +32,15 @@ const playerSchema = new mongoose.Schema({
         select: false
     }
 })
+
+playerSchema.pre("findOneAndDelete",  function( next) {
+
+    Team.updateMany({ players: this.get("_id") }, { $pull: { players: this.get("_id") }}).then(
+
+        () => next()
+    )
+
+} )
 
 const Player = mongoose.model("Player", playerSchema)
 
