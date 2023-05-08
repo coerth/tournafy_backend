@@ -10,3 +10,5 @@ interface IUserMethods {
     comparePassword(password: String): Boolean
     isAdmin(): Boolean
 }
+
+

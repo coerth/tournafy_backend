@@ -21,6 +21,7 @@ import cors from 'cors'
 import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
 import {Jwt} from "jsonwebtoken"
 import userRouter from '../mongoose/routes/userRoute';
+import { MyContext } from '../types/types';
 
 //JWT THINGS
 
@@ -32,8 +33,9 @@ if (process.env.NODE_ENV === 'development') {
   console.log("Development mode...");
 }
 
+
 const httpServer = http.createServer(app);
-const server: ApolloServer = new ApolloServer({
+const server: ApolloServer = new ApolloServer<MyContext>({
   typeDefs: [
     typeDefs,
   ],

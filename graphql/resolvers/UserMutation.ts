@@ -1,14 +1,18 @@
-import { Args, UserInput } from "../../types/types";
+import { Args, UserInput, MyContext } from "../../types/types";
 import UserModel from '../../mongoose/models/userModel'
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import AppError from "../../utility/AppError"
+import { BaseContext } from "@apollo/server";
 
 
 
 
 export default {
-    register: async (_parent:never, { input }: Args) => {
+    register: async (_parent:never, { input }: Args, {authScope}:MyContext) => {
+
+      
+
         if('fullName' in input){
 
         let newUser = new UserModel({email: input.email, fullName: input.fullName});
@@ -22,6 +26,7 @@ export default {
       },
       
     sign_in: async (_parent: never, { input }:Args) => {
+
         if('email' in input && "password" in input){
             let user = await UserModel.findOne({email: input.email});
   

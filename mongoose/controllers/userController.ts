@@ -24,31 +24,6 @@ export const register = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-/* export const sign_in = function (req: Request, res: Response) {
- 
-
-  UserModel.findOne(
-    {
-      email: req.body.email,
-    },
-    function (err: Error, user: unknown) {
-      if (err) throw err;
-      if (!user || !User.comparePassword(req.body.password)) {
-        return res
-          .status(401)
-          .json({
-            message: "Authentication failed. Invalid user or password.",
-          });
-      }
-      return res.json({
-        token: jwt.sign(
-          { email: user.email, fullName: user.fullName, _id: user._id },
-          process.env.REACT_APP_TOKEN
-        ),
-      });
-    }
-  );
-};  */
 
  export const sign_in = catchAsync( async (req: Request, res: Response) => {
   let user = await UserModel.findOne({email: req.body.email});
@@ -62,7 +37,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     .status(200)
     .json({
       token: jwt.sign(
-        { email: user.email, fullName: user.fullName, _id: user._id },
+        { email: user.email, fullName: user.fullName, _id: user._id, role: user.role },
         "process.env.REACT_APP_TOKEN"
       ),
     });

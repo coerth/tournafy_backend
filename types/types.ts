@@ -38,7 +38,7 @@ export type User = {
     _id?: string,
     fullName: string,
     email: string,
-    hash_password?: string
+    hash_password: string
 }
 
 
@@ -89,3 +89,14 @@ export type SignInInput = {
     email: string,
     password: string
 }
+
+export type MyContext = {
+
+    // You can optionally create a TS interface to set up types
+  
+    // for your contextValue
+  
+    authScope?: String,
+   
+  
+  }
