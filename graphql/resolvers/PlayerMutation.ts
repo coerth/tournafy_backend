@@ -17,7 +17,10 @@ export default {
           return null;
         }
       }, */
-      deletePlayer: async (_parent:never, { id }:Args) => {
+      deletePlayer: async (_parent:never, { id }:Args, {token}:MyContext) => {
+
+        console.log(token)
+
         let deletedPlayer = await PlayerModel.findByIdAndDelete(id)
         if (deletedPlayer === null) {
           return false; 
