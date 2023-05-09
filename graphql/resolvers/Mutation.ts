@@ -18,5 +18,6 @@ export default {
     deleteTournament: TournamentMutation.deleteTournament,
     updateTournament: TournamentMutation.updateTournament,
     register: UserMutation.register,
-    sign_in: UserMutation.sign_in
+    sign_in: UserMutation.sign_in,
+    login: UserMutation.login
 }

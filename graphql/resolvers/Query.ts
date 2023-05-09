@@ -3,7 +3,8 @@ import PlayerModel from '../../mongoose/models/playerModel';
 import TeamModel from "../../mongoose/models/teamModel"
 import MatchModel from "../../mongoose/models/matchModel"
 import TournamentModel from "../../mongoose/models/tournamentModel"
-import {Args} from '../../types/types'
+import {Args, MyContext} from '../../types/types'
+import UserModel from '../../mongoose/models/userModel';
 
 export default {
     players: async (_parent:never) => PlayerModel.find(),
@@ -13,5 +14,6 @@ export default {
     matches: async (_parent:never) => MatchModel.find(),
     match: async  (_parent:never, { id }:Args) => MatchModel.findById(id),
     tournaments: async (_parent:never) => TournamentModel.find(),
-    tournament: async  (_parent:never, { id }:Args) => TournamentModel.findById(id)
+    tournament: async  (_parent:never, { id }:Args) => TournamentModel.findById(id),
+    currentUser: async (_parent:never, {session}: MyContext) => UserModel.findById(session.userId)
 }

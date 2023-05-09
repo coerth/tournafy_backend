@@ -43,6 +43,20 @@ export default {
               };
             }
             }; 
+    },
+
+    login: async (_parent: never, { input }: Args, {session}: MyContext) => {
+      if('email' in input && "password" in input){
+        let user = await UserModel.findOne({email: input.email});
+
+        if(!user || !bcrypt.compareSync(input.password, user.hash_password? user.hash_password : ""))
+        {
+          throw new AppError("Authentication failed. Invalid user or password.", 401)
+        }else{
+          session.update(user)
+          return user
     }
+  }
+}
 
 }

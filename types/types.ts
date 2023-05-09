@@ -1,3 +1,6 @@
+import { Request, Response } from 'express';
+
+
 export type Player = {
     _id?: string,
     name: string,
@@ -90,6 +93,31 @@ export type SignInInput = {
     password: string
 }
 
+export class Session {
+    request: Request;
+    response: Response;
+    userId: any;
+    
+    constructor(request: Request, response: Response) {
+        this.request = request;
+        this.response = response;
+        this.userId = request.cookies.userId
+    }
+
+    update(user: any) {
+        if(!user) {
+            return;
+        }
+
+        const cookieOptions = {
+            httpOnly: true,
+        }
+
+        this.response.cookie('userId', user._id?.toString(), cookieOptions)
+    }
+
+}
+
 export type MyContext = {
 
     // You can optionally create a TS interface to set up types
@@ -97,6 +125,7 @@ export type MyContext = {
     // for your contextValue
   
     authScope?: String,
+    session: Session
    
   
   }

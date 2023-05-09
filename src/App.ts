@@ -14,19 +14,24 @@ import { expressMiddleware } from '@apollo/server/express4';
 // The following 2 imports are for reliable shutdown of the server.
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import http from 'http';
-import Query from '.././graphql/resolvers/query';
+import Query from '.././graphql/resolvers/Query';
 import Mutation from '../graphql/resolvers/Mutation';
 import typeDefs from '../graphql/graphql_schema';
 import cors from 'cors'
 import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
 import {Jwt} from "jsonwebtoken"
 import userRouter from '../mongoose/routes/userRoute';
-import { MyContext } from '../types/types';
+import { MyContext, Session } from '../types/types';
+import { sessionMiddleware } from '../utility/Session';
+import cookieParser from 'cookie-parser' 
 
 //JWT THINGS
 
 
 const app = express();
+
+app.use(cookieParser());
+app.use(sessionMiddleware);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -35,7 +40,7 @@ if (process.env.NODE_ENV === 'development') {
 
 
 const httpServer = http.createServer(app);
-const server: ApolloServer = new ApolloServer<MyContext>({
+const server: ApolloServer<MyContext> = new ApolloServer<MyContext>({
   typeDefs: [
     typeDefs,
   ],
@@ -51,7 +56,11 @@ await server.start();
 app.use('/graphql', 
 cors<cors.CorsRequest>(),
 express.json(),
-expressMiddleware(server));
+expressMiddleware(server, {
+  context: async ({ req, res}) => ({
+    session: req.session
+  })
+}));
 
 app.use(cors())
 app.use(express.json()); // Body parser for JSON data
