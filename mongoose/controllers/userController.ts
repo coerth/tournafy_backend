@@ -8,14 +8,14 @@ import { User } from "../../types/types";
 import { PassThrough } from "stream";
 import * as dotenv from "dotenv"
 import AppError from "../../utility/AppError"
-import { verifyJWT } from "../../utility/Security";
+import { comparePasswords, generateHashedPassword, verifyJWT, signJWT } from "../../utility/Security";
 
 
 
 
 export const register = catchAsync(async (req: Request, res: Response) => {
   let newUser = new UserModel(req.body);
-  newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
+  newUser.hash_password =generateHashedPassword(req.body.password);
   newUser = await UserModel.create(newUser);
   newUser.hash_password = ""
 
@@ -29,7 +29,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
  export const sign_in = catchAsync( async (req: Request, res: Response) => {
   let user = await UserModel.findOne({email: req.body.email});
   
-  if(!user || !bcrypt.compareSync(req.body.password, user.hash_password? user.hash_password : ""))
+  if(!user || !comparePasswords(req.body.password, user.hash_password? user.hash_password : ""))
   {
     throw new AppError("Authentication failed. Invalid user or password.", 401)
   }
@@ -37,9 +37,12 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     return res
     .status(200)
     .json({
-      token: jwt.sign(
-        { email: user.email, fullName: user.fullName, _id: user._id, role: user.role },
-        process.env.REACT_APP_TOKEN as jwt.Secret
+      token: signJWT(
+        {_id: user.get("id"),
+        fullName: user.get("fullName"),
+        email: user.get("email"),
+        role: user.get("role")
+      } as User
       ),
     });
   }
@@ -54,7 +57,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
       user: verifyJWT(token)
     })
   })
-
+/* 
 export const loginRequired = function (req: Request, res: Response, next: NextFunction) {
  
   
@@ -72,4 +75,4 @@ export const profile = function (req: Request, res: Response, next: NextFunction
   } else {
     return res.status(401).json({ message: "Invalid token" });
   }
-};
+}; */
