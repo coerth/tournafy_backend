@@ -2,10 +2,10 @@ import PlayerMutation from './PlayerMutation'
 import TeamMutation from './TeamMutation'
 import MatchMutation from './MatchMutation'
 import TournamentMutation from './TournamentMutation'
-import UserMutation from './UserMutation'
+import LoginMutation from './LoginMutation'
 
 export default {
-    createPlayer: PlayerMutation.createPlayer,
+    //createPlayer: PlayerMutation.createPlayer,
     deletePlayer: PlayerMutation.deletePlayer,
     updatePlayer: PlayerMutation.updatePlayer,
     createTeam: TeamMutation.createTeam,
@@ -17,7 +17,7 @@ export default {
     createTournament: TournamentMutation.createTournament,
     deleteTournament: TournamentMutation.deleteTournament,
     updateTournament: TournamentMutation.updateTournament,
-    register: UserMutation.register,
-    sign_in: UserMutation.sign_in,
-    updateUser: UserMutation.updateUser
+    register: LoginMutation.register,
+    sign_in: LoginMutation.sign_in,
+    
 }

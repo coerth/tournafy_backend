@@ -1,35 +1,29 @@
-import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 import UserModel from "../models/userModel";
 import catchAsync from "../../utility/CatchAsync";
 import { Request, Response, NextFunction } from "express";
-import { User } from "../../types/types";
-import { PassThrough } from "stream";
-import * as dotenv from "dotenv"
+import { Player, User } from "../../types/types";
 import AppError from "../../utility/AppError"
 import { comparePasswords, generateHashedPassword, verifyJWT, signJWT } from "../../utility/Security";
-
-
+import PlayerModel from "../models/playerModel";
 
 
 export const register = catchAsync(async (req: Request, res: Response) => {
-  let newUser = new UserModel(req.body);
-  newUser.hash_password =generateHashedPassword(req.body.password);
-  newUser = await UserModel.create(newUser);
-  newUser.hash_password = ""
+  let newPlayer = new PlayerModel(req.body);
+  newPlayer.hash_password =generateHashedPassword(req.body.password);
+  newPlayer = await PlayerModel.create(newPlayer);
+  newPlayer.hash_password = ""
 
   res.status(201).json({
     status: "success",
-    User: newUser,
+    User: newPlayer,
   });
 });
 
 
  export const sign_in = catchAsync( async (req: Request, res: Response) => {
-  let user = await UserModel.findOne({email: req.body.email});
+  let player = await PlayerModel.findOne({email: req.body.email});
   
-  if(!user || !comparePasswords(req.body.password, user.hash_password? user.hash_password : ""))
+  if(!player || !comparePasswords(req.body.password, player.hash_password? player.hash_password : ""))
   {
     throw new AppError("Authentication failed. Invalid user or password.", 401)
   }
@@ -38,11 +32,11 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     .status(200)
     .json({
       token: signJWT(
-        {_id: user.get("id"),
-        fullName: user.get("fullName"),
-        email: user.get("email"),
-        role: user.get("role")
-      } as User
+        {_id: player.get("id"),
+        name: player.get("name"),
+        email: player.get("email"),
+        role: player.get("role")
+      } as Player
       ),
     });
   }
@@ -54,7 +48,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     return res
     .status(200)
     .json({
-      user: verifyJWT(token)
+      player: verifyJWT(token)
     })
   })
 /* 

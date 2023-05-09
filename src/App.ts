@@ -20,11 +20,12 @@ import typeDefs from '../graphql/graphql_schema';
 import cors from 'cors'
 import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
 import {Jwt} from "jsonwebtoken"
-import userRouter from '../mongoose/routes/userRoute';
+import userRouter from '../mongoose/routes/loginRoute';
 import { MyContext } from '../types/types';
 
 import cookieParser from 'cookie-parser' 
 import { verifyJWT } from '../utility/Security';
+import loginRouter from '../mongoose/routes/loginRoute';
 
 //JWT THINGS
 
@@ -72,7 +73,7 @@ app.use("/api/v1/player", playerRouter)
 app.use("/api/v1/team", teamRouter)
 app.use("/api/v1/match", matchRouter)
 app.use("/api/v1/tournament", tournamentRouter)
-app.use("/api/v1/user", userRouter)
+app.use("/api/v1/login", loginRouter)
 
 
 app.all("*", (req:Request, res:Response, next:NextFunction) => {

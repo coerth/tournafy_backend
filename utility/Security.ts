@@ -1,4 +1,4 @@
-import { User } from "../types/types";
+import { Player, User } from "../types/types";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt";
 
@@ -15,14 +15,14 @@ export function verifyJWT(token: any) {
       return decode
 } 
 
-export function signJWT(user: User){
-    if(user == null)
+export function signJWT(player: Player){
+    if(player == null)
     {
         return null
     }
     
    return jwt.sign(
-        { email: user.email, fullName: user.fullName, _id: user._id, role: user.role },
+        { email: player.email, fullName: player.name, _id: player._id, role: player.role },
         process.env.REACT_APP_TOKEN as jwt.Secret
       )
 }

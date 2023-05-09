@@ -3,7 +3,7 @@ import PlayerModel from '../../mongoose/models/playerModel'
 
 
 export default {
-    createPlayer: async (_parent:never, { input }: Args) => {
+    /* createPlayer: async (_parent:never, { input }: Args) => {
         if('gamerTag' in input){
           let newPlayer: Player = {
             name: input.name ? input.name: "",
@@ -16,7 +16,7 @@ export default {
         } else {
           return null;
         }
-      },
+      }, */
       deletePlayer: async (_parent:never, { id }:Args) => {
         let deletedPlayer = await PlayerModel.findByIdAndDelete(id)
         if (deletedPlayer === null) {
