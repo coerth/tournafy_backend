@@ -8,6 +8,7 @@ import { User } from "../../types/types";
 import { PassThrough } from "stream";
 import * as dotenv from "dotenv"
 import AppError from "../../utility/AppError"
+import { verifyJWT } from "../../utility/Security";
 
 
 
@@ -38,11 +39,21 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     .json({
       token: jwt.sign(
         { email: user.email, fullName: user.fullName, _id: user._id, role: user.role },
-        "process.env.REACT_APP_TOKEN"
+        process.env.REACT_APP_TOKEN as jwt.Secret
       ),
     });
   }
-  }); 
+  });
+  
+  export const verify = catchAsync( async (req: Request, res: Response) => {
+    const token = req.headers.authorization
+
+    return res
+    .status(200)
+    .json({
+      user: verifyJWT(token)
+    })
+  })
 
 export const loginRequired = function (req: Request, res: Response, next: NextFunction) {
  

@@ -62,7 +62,6 @@ const typeDefs = `#graphql
     match: Match!
     tournaments: [Tournament!]!
     tournament: Tournament!
-    currentUser: User
   }
 
   type Mutation{
@@ -81,6 +80,7 @@ const typeDefs = `#graphql
     register(input: UserInput!): User
     sign_in(input: SignInInput!): JWT
     login(email: String!, password: String!): User
+    updateUser(id: ID!, input: UserInput!): User
   }
 
   input PlayerInput {
@@ -117,8 +117,8 @@ const typeDefs = `#graphql
 
 input UserInput {
   fullName: String!,
-  email: String!,
-  password: String!
+  email: String,
+  password: String
 }
 
 input SignInInput {

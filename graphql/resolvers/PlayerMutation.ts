@@ -1,4 +1,4 @@
-import { Args, Player } from "../../types/types";
+import { Args, MyContext, Player } from "../../types/types";
 import PlayerModel from '../../mongoose/models/playerModel'
 
 
@@ -25,6 +25,7 @@ export default {
         return true;
     },
     updatePlayer: async (_parent: never, { id, input }:Args) => {
+
         if('gamerTag' in input){
         let player = await PlayerModel.findByIdAndUpdate(id, input, {
             new:true,

@@ -21,9 +21,10 @@ import cors from 'cors'
 import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
 import {Jwt} from "jsonwebtoken"
 import userRouter from '../mongoose/routes/userRoute';
-import { MyContext, Session } from '../types/types';
-import { sessionMiddleware } from '../utility/Session';
+import { MyContext } from '../types/types';
+
 import cookieParser from 'cookie-parser' 
+import { verifyJWT } from '../utility/Security';
 
 //JWT THINGS
 
@@ -31,7 +32,6 @@ import cookieParser from 'cookie-parser'
 const app = express();
 
 app.use(cookieParser());
-app.use(sessionMiddleware);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'development') {
 
 
 const httpServer = http.createServer(app);
-const server: ApolloServer<MyContext> = new ApolloServer<MyContext>({
+const server: ApolloServer = new ApolloServer<MyContext>({
   typeDefs: [
     typeDefs,
   ],
@@ -58,7 +58,10 @@ cors<cors.CorsRequest>(),
 express.json(),
 expressMiddleware(server, {
   context: async ({ req, res}) => ({
-    session: req.session
+   
+    token: req.headers.authorization || "",
+    user: verifyJWT(req.headers.authorization)
+
   })
 }));
 

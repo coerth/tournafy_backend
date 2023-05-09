@@ -9,7 +9,7 @@ import { BaseContext } from "@apollo/server";
 
 
 export default {
-    register: async (_parent:never, { input }: Args, {authScope}:MyContext) => {
+    register: async (_parent:never, { input }: Args) => {
 
       
 
@@ -45,7 +45,7 @@ export default {
             }; 
     },
 
-    login: async (_parent: never, { input }: Args, {session}: MyContext) => {
+    login: async (_parent: never, { input }: Args) => {
       if('email' in input && "password" in input){
         let user = await UserModel.findOne({email: input.email});
 
@@ -53,8 +53,21 @@ export default {
         {
           throw new AppError("Authentication failed. Invalid user or password.", 401)
         }else{
-          session.update(user)
+          //session.update(user)
           return user
+    }
+  }
+},
+
+updateUser: async (_parent: never, { id, input }:Args, {user}: MyContext) => {
+  if(user !=null && id == user._id )
+  {
+    if('fullName' in input){
+      let updatedUser = await UserModel.findByIdAndUpdate(id, input, {
+        new:true,
+        runValidators: true
+      })
+      return updatedUser; 
     }
   }
 }

@@ -12,21 +12,5 @@
 
   */
 
-import { Session } from "../types/types";
 
-declare module 'express-serve-static-core' {
-  interface Request {
-    session: Session
-  }
-}
-
-export {}
-
-// declare global {
-//   namespace Express {
-//     interface Request {
-//       session: Session
-//     }
-//   }
-// }
 

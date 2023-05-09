@@ -14,6 +14,5 @@ export default {
     matches: async (_parent:never) => MatchModel.find(),
     match: async  (_parent:never, { id }:Args) => MatchModel.findById(id),
     tournaments: async (_parent:never) => TournamentModel.find(),
-    tournament: async  (_parent:never, { id }:Args) => TournamentModel.findById(id),
-    currentUser: async (_parent:never, {session}: MyContext) => UserModel.findById(session.userId)
+    tournament: async  (_parent:never, { id }:Args) => TournamentModel.findById(id)
 }
