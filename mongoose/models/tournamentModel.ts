@@ -20,8 +20,14 @@ const tournamentSchema = new mongoose.Schema({
     tournamentType: {
         type: String,
         enum: ["Elimination", "Round Robin"],
-        message: "tournament type must be Elimination or Round Robin",
+        message: "Tournament type must be Elimination or Round Robin",
         default: "Elimination"
+    }, 
+    tournamentGame: {
+        type: String,
+        enum: ["Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"],
+        message: "Tournament type must be Elimination or Round Robin",
+        default: "Other"
     }, 
     maxTeams: {
         type: Number,
@@ -29,7 +35,8 @@ const tournamentSchema = new mongoose.Schema({
     }, 
     minTeams: {
         type: Number,
-        required: [true, "Tournament must have minimum teams"]
+        required: [true, "Tournament must have minimum teams"],
+        default: 2
     },
     //player: Array
     matches: [{

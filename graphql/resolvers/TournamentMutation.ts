@@ -10,6 +10,7 @@ export default {
             startDate: input.startDate ? input.startDate : Date.now(),
             endDate: input.endDate ? input.endDate : Date.now(),
             tournamentType: input.tournamentType ? input.tournamentType : "Elimination",
+            tournamentGame: input.tournamentGame ? input.tournamentGame : "Other",
             maxTeams: input.maxTeams,
             minTeams: input.minTeams,
           };

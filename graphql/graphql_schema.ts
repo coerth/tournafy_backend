@@ -33,6 +33,7 @@ const typeDefs = `#graphql
     startDate: String
     endDate: String
     tournamentType: String!
+    tournamentGame: String
     maxTeams: Int!
     minTeams: Int!
     matches: [Match!]!
@@ -102,6 +103,7 @@ const typeDefs = `#graphql
     startDate: String,
     endDate: String,
     tournamentType: String,
+    tournamentGame: String
     maxTeams: Int,
     minTeams: Int!,
     matches: [ID],

@@ -31,6 +31,7 @@ export type Tournament = {
   startDate: number;
   endDate: number;
   tournamentType: string;
+  tournamentGame: string;
   maxTeams: number;
   minTeams: number;
   matches?: Match[];
@@ -76,6 +77,7 @@ export type TournamentInput = {
   startDate: number;
   endDate: number;
   tournamentType: string;
+  tournamentGame: string;
   maxTeams: number;
   minTeams: number;
   matches: Match[];
