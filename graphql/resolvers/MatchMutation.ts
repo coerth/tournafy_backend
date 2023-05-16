@@ -1,16 +1,16 @@
-import { Args, Match } from "../../types/types";
+import { Args, Match, MatchInput } from "../../types/types";
 import MatchModel from '../../mongoose/models/matchModel'
 
 
 export default {
     createMatch: async (_parent:never, { input }: Args) => {
-        if('location' in input){
-          let newMatch: Match = {
+        if('stage' in input){
+          let newMatch: MatchInput = {
             location: input.location,
             winner: input.winner,
             score: input.score,
             stage: input.stage,
-            teams: input.teams
+            teams: input.teams ? input.teams : []
           };
           let createdMatch = await MatchModel.create(newMatch)
           return createdMatch;

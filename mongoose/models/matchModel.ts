@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const matchSchema = new mongoose.Schema({
     location: {
         type: String,
-        required: [true, "A match must have a location"],
+        //required: [true, "A match must have a location"],
     }, 
     date: {
         type: Date,
@@ -28,8 +28,8 @@ const matchSchema = new mongoose.Schema({
     //player: Array
     teams: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Team",
-        required: [true, "A team must be assigned to a match"]
+        ref: "Team"
+        
     }],
 })
 
@@ -58,6 +58,6 @@ matchSchema.post("save", function(doc, next){
 })
 
 
-const Match = mongoose.model("Match", matchSchema)
+const MatchModel = mongoose.model("Match", matchSchema)
 
-export default Match
+export default MatchModel

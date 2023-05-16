@@ -57,7 +57,7 @@ const typeDefs = `#graphql
     matches: [Match!]!
     match: Match!
     tournaments: [Tournament!]!
-    tournament: Tournament!
+    tournament(id: ID!): Tournament!
   }
 
   type Mutation{
@@ -73,6 +73,7 @@ const typeDefs = `#graphql
     createTournament(input: TournamentInput!): Tournament
     deleteTournament(id: ID!): Boolean
     updateTournament(id: ID!, input: TournamentInput!): Tournament
+    generateMatches(id: ID!): Tournament
     register(input: RegisterInput!): Player
     sign_in(input: SignInInput!): SignedIn
   }

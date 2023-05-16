@@ -18,9 +18,9 @@ export type Team = {
 
 export type Match = {
   _id?: string;
-  location: string;
-  winner: Team;
-  score: number[];
+  location?: string;
+  winner?: Team;
+  score?: number[];
   stage: number;
   teams: Team[];
 };
@@ -65,23 +65,23 @@ export type TeamInput = {
 };
 
 export type MatchInput = {
-  location: string;
-  winner: Team;
-  score: number[];
+  location?: string;
+  winner?: Team;
+  score?: number[];
   stage: number;
-  teams: Team[];
+  teams?: string[];
 };
 
 export type TournamentInput = {
-  name: string;
-  startDate: number;
-  endDate: number;
-  tournamentType: string;
-  tournamentGame: string;
-  maxTeams: number;
+  name?: string;
+  startDate?: number;
+  endDate?: number;
+  tournamentType?: string;
+  tournamentGame?: string;
+  maxTeams?: number;
   minTeams: number;
-  matches: Match[];
-  teams: Team[];
+  matches?: string[];
+  teams?: Team[];
 };
 
 export type RegisterInput = {
