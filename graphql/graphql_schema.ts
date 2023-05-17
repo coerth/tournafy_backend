@@ -19,7 +19,7 @@ const typeDefs = `#graphql
 
   type Match {
     _id: ID!
-    location: String!
+    location: String
     date: String
     winner: Team
     score: [Int]
