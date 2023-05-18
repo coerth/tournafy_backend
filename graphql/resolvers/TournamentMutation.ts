@@ -1,6 +1,7 @@
 import { Args, MatchInput, Tournament, TournamentInput } from "../../types/types";
 import TournamentModel from '../../mongoose/models/tournamentModel'
 import MatchModel from "../../mongoose/models/matchModel"
+import AppErr from "../../utility/AppError";
 
 export default {
     createTournament: async (_parent:never, { input }: Args) => {
@@ -14,7 +15,7 @@ export default {
             maxTeams: input.maxTeams ? input.maxTeams : 8,
             minTeams: input.minTeams,
           };
-          let createdTournament = await TournamentModel.create(newTournament)
+          let createdTournament: any = await TournamentModel.create(newTournament)
           return createdTournament;
         } else {
           return null;
@@ -72,15 +73,15 @@ export default {
         
         let createdMatcharray: Array<string> = []
 
-        for (const Match of matchArray)
+        for (const match of matchArray)
         {
-          const createdMatch = await MatchModel.create(Match)
+          const createdMatch = await MatchModel.create(match)
           createdMatcharray.push(createdMatch._id.toString())
         }
  
         let input: TournamentInput = {
           matches: createdMatcharray,
-          minTeams: 2
+          minTeams: 8
         }
 
         let updatedTournament = await TournamentModel.findByIdAndUpdate(id, input, {
@@ -88,7 +89,41 @@ export default {
           runValidators: true
       })
         return updatedTournament; 
-      }
+      },
+
+      addTeamToTournament:  async (_parent: never, { id, input}:Args) => {
+        
+        if("teamID" in input)
+        {
+
+          
+          let tournament = await TournamentModel.findById(id)
+          
+          let newTeamArray: Array<string> = []
+
+          for( const team of tournament?.teams!)
+          {
+            newTeamArray.push(team._id.toString())
+          }
+          if(newTeamArray.includes(input.teamID))
+          {
+            throw new AppErr("Team already in tournament", 404)
+          }
+          newTeamArray.push(input.teamID)
+
+          let tournamentInput: TournamentInput = {
+            teams: newTeamArray,
+            minTeams: 8
+          }
+
+
+          let updatedTournament = await TournamentModel.findByIdAndUpdate(id, tournamentInput, {
+            new:true,
+            runValidators: true
+        })
+          return updatedTournament; 
+        }
+        }
 
         
     

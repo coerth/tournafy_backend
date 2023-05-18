@@ -48,7 +48,7 @@ export type User = {
 
 export type Args = {
   id: string;
-  input: PlayerInput | TeamInput | MatchInput | TournamentInput | RegisterInput;
+  input: PlayerInput | TeamInput | MatchInput | TournamentInput | RegisterInput | AddTeamInput;
 };
 
 export type PlayerInput = {
@@ -81,7 +81,7 @@ export type TournamentInput = {
   maxTeams?: number;
   minTeams: number;
   matches?: string[];
-  teams?: Team[];
+  teams?: string[];
 };
 
 export type RegisterInput = {
@@ -92,6 +92,9 @@ export type RegisterInput = {
   confirmPassword: string;
   phone: number;
 };
+export type AddTeamInput = {
+  teamID: string
+}
 
 export type SignInInput = {
   email: string;

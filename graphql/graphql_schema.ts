@@ -74,6 +74,7 @@ const typeDefs = `#graphql
     deleteTournament(id: ID!): Boolean
     updateTournament(id: ID!, input: TournamentInput!): Tournament
     generateMatches(id: ID!): Tournament
+    addTeamToTournament(id: ID!, input: AddTeamInput!): Tournament
     register(input: RegisterInput!): Player
     sign_in(input: SignInInput!): SignedIn
   }
@@ -123,6 +124,10 @@ input RegisterInput {
 input SignInInput {
   email: String!,
   password: String!
+}
+
+input AddTeamInput {
+  teamID: String!
 }
 
 `;

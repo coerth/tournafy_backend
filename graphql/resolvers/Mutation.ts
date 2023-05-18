@@ -18,6 +18,7 @@ export default {
     deleteTournament: TournamentMutation.deleteTournament,
     updateTournament: TournamentMutation.updateTournament,
     generateMatches: TournamentMutation.generateMatches,
+    addTeamToTournament: TournamentMutation.addTeamToTournament,
     register: LoginMutation.register,
     sign_in: LoginMutation.sign_in,
     
