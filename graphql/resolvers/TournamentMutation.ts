@@ -40,33 +40,64 @@ export default {
     generateMatches: async (_parent: never, { id}:Args) => {
 
       let tournament = await TournamentModel.findById(id)
+      let teamAmount = 0
+       
+       teamAmount = tournament!.teams ? tournament!.teams.length : 0
 
-      let matchArray;
+        let matchAmount = 0
+        let stagesNeeded = 0
+        let matchesPerStage = []
 
-        let finalMatch: MatchInput = {
-          stage: 1
-        }
-
-        let semiFinalMatch1: MatchInput = {
-          stage: 2
-        }
-
-        let semiFinalMatch2: MatchInput = {
-          stage: 2
-        }
-        
-        matchArray = [finalMatch, semiFinalMatch1, semiFinalMatch2]
-        
-        if(tournament?.teams)
+       while(teamAmount > 1)
        {
-        for(let i = 0; i < tournament.teams.length; i = i + 2)
+        if(teamAmount === 0)
         {
-          let quarterFinalMatch: MatchInput = {
-            stage: 3,
-            teams: [tournament.teams[i]._id.toString(), tournament.teams[i+1]._id.toString()]
-          }
-          matchArray.push(quarterFinalMatch)
+          break
+        }
+         matchAmount =  Math.ceil(teamAmount / 2)
+         teamAmount = teamAmount / 2
+         matchesPerStage.push(matchAmount)
+         stagesNeeded ++
+       }
 
+        console.log(`Teams: ${teamAmount}  Stages: ${stagesNeeded}  Matches per Stage: ${matchesPerStage}`) 
+      
+
+      let matchArray = [];
+
+      let teamsLeft = tournament?.teams ? tournament?.teams : []
+
+      for(let i = 0; i < stagesNeeded; i ++)
+      {
+        for (let j = 0; j < matchesPerStage[i]; j ++)
+        {
+
+          let matchInput : MatchInput;
+          if(teamsLeft!.length >= 2)
+          {
+            matchInput = {
+              stage: stagesNeeded - i,
+              teams: [teamsLeft[0]._id.toString(), teamsLeft[1]._id.toString()]
+            }
+            teamsLeft.splice(0,2)
+          }
+          else if(teamsLeft!.length === 1)
+          {
+            matchInput = {
+              stage: stagesNeeded - i,
+              teams: [teamsLeft[0]._id.toString()]
+            }
+            teamsLeft.pop()
+          }
+          else{
+            matchInput = {
+              stage: stagesNeeded - i
+            }
+          }
+
+          console.log(matchInput)
+
+          matchArray.push(matchInput)
         }
       }
 
@@ -81,7 +112,7 @@ export default {
  
         let input: TournamentInput = {
           matches: createdMatcharray,
-          minTeams: 8
+          minTeams: tournament?.minTeams!
         }
 
         let updatedTournament = await TournamentModel.findByIdAndUpdate(id, input, {
