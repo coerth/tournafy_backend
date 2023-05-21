@@ -25,7 +25,7 @@ const tournamentSchema = new mongoose.Schema({
     }, 
     tournamentGame: {
         type: String,
-        enum: ["Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"],
+        enum: ["Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Valorant", "Other"],
         message: "Tournament type must be Elimination or Round Robin",
         default: "Other"
     }, 

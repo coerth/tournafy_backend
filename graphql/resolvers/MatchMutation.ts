@@ -26,7 +26,7 @@ export default {
         return true;
     },
     updateMatch: async (_parent: never, { id, input }:Args) => {
-        if('captain' in input){
+        if('stage' in input){
         let match = await MatchModel.findByIdAndUpdate(id, input, {
             new:true,
             runValidators: true
