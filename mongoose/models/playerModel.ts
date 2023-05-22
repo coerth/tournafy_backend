@@ -1,6 +1,5 @@
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 import Team from "./teamModel";
-import { ObjectID } from "graphql-scalars/typings/mocks";
 
 const playerSchema = new mongoose.Schema({
   name: {

@@ -1,8 +1,5 @@
 import {
   Args,
-
-  MyContext,
-
   Player,
 } from "../../types/types";
 import AppError from "../../utility/AppError";
@@ -10,7 +7,6 @@ import {
   generateHashedPassword,
   comparePasswords,
   signJWT,
-  hasAccess,
 } from "../../utility/Security";
 import PlayerModel from "../../mongoose/models/playerModel";
 import logger from "../../utility/Logger"

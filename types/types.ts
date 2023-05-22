@@ -1,5 +1,3 @@
-import { Request, Response } from "express";
-
 export type Player = {
   _id?: string;
   name: string;

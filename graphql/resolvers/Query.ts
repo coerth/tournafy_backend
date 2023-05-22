@@ -4,7 +4,6 @@ import TeamModel from "../../mongoose/models/teamModel"
 import MatchModel from "../../mongoose/models/matchModel"
 import TournamentModel from "../../mongoose/models/tournamentModel"
 import {Args, MyContext} from '../../types/types'
-import UserModel from '../../mongoose/models/userModel';
 import { hasAccess } from '../../utility/Security';
 
 export default {

@@ -1,4 +1,4 @@
-import { Args, Match, MatchInput, MyContext } from "../../types/types";
+import { Args, MatchInput, MyContext } from "../../types/types";
 import MatchModel from '../../mongoose/models/matchModel'
 import AppErr from "../../utility/AppError";
 

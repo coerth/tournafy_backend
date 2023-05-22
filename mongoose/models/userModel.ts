@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -34,15 +34,6 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
 });
-
-/*  userSchema.method("comparePassword", function comparePassword(password) {
-    return bcrypt.compareSync(password, this.hash_password)  
-})
-
-userSchema.method("isAdmin", function isAdmin() {
-    return this.role == "Admin"
-})  */
-
 
 
 const UserModel = mongoose.model("User", userSchema);

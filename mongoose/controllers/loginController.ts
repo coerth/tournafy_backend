@@ -1,7 +1,6 @@
-import UserModel from "../models/userModel";
 import catchAsync from "../../utility/CatchAsync";
-import { Request, Response, NextFunction } from "express";
-import { Player, User } from "../../types/types";
+import { Request, Response} from "express";
+import { Player } from "../../types/types";
 import AppError from "../../utility/AppError"
 import { comparePasswords, generateHashedPassword, verifyJWT, signJWT } from "../../utility/Security";
 import PlayerModel from "../models/playerModel";
