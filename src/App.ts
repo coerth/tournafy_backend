@@ -49,6 +49,7 @@ const server: ApolloServer = new ApolloServer<MyContext>({
     Query,
     Mutation
   },
+  
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
@@ -58,10 +59,11 @@ app.use('/graphql',
 cors<cors.CorsRequest>(),
 express.json(),
 expressMiddleware(server, {
-  context: async ({ req, res}) => ({
-   
+  context: async ({req}) => ({
+    
     token: req.headers.authorization || "",
-    user: verifyJWT(req.headers.authorization)
+    user: verifyJWT(req.headers.authorization),
+   
 
   })
 }));

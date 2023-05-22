@@ -59,6 +59,7 @@ const typeDefs = `#graphql
     match: Match!
     tournaments: [Tournament!]!
     tournament(id: ID!): Tournament!
+    admin_access: Boolean
   }
 
   type Mutation{
@@ -78,7 +79,6 @@ const typeDefs = `#graphql
     addTeamToTournament(id: ID!, input: AddTeamInput!): Tournament
     register(input: RegisterInput!): Player
     sign_in(input: SignInInput!): SignedIn
-    admin_access(token: String!): Boolean
   }
 
   input PlayerInput {

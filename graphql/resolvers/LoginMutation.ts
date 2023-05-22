@@ -68,9 +68,13 @@ export default {
       }
     }
   },
-  admin_access: async (_parent: never, { token }: Args) => {
-    return hasAccess("Admin", token)
-  }
+  /* admin_access: async (_parent: never, {token}: MyContext) => {
+    if(token)
+    {
+      return hasAccess("Admin", token)
+    }
+
+  } */
 
   /* updateUser: async (
     _parent: never,

@@ -20,7 +20,6 @@ export default {
     generateMatches: TournamentMutation.generateMatches,
     addTeamToTournament: TournamentMutation.addTeamToTournament,
     register: LoginMutation.register,
-    sign_in: LoginMutation.sign_in,
-    admin_access: LoginMutation.admin_access
+    sign_in: LoginMutation.sign_in
     
 }
