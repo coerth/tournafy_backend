@@ -15,6 +15,7 @@ const typeDefs = `#graphql
     name: String!
     captain: Player
     players: [Player]
+    tournaments: [Tournament]
   }
 
   type Match {

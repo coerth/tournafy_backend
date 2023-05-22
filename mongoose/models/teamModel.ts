@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import slugify from "slugify";
+import Tournament from "./tournamentModel";
 
 const teamSchema = new mongoose.Schema({
     name: {
@@ -29,6 +30,13 @@ const teamSchema = new mongoose.Schema({
         toJSON: {virtuals: true},
         toObject: {virtuals: true},
     })
+
+teamSchema.virtual("tournaments").get( async function ()
+{
+  return await Tournament.find( {
+        teams: this.get("id")
+    })
+})    
 
 teamSchema.pre("save", function(next){
     this.slug = slugify(this.name, {lower:true})
