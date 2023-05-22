@@ -1,10 +1,13 @@
-import { Args, MatchInput, Tournament, TournamentInput } from "../../types/types";
+import { Args, MatchInput, MyContext, Tournament, TournamentInput } from "../../types/types";
 import TournamentModel from '../../mongoose/models/tournamentModel'
 import MatchModel from "../../mongoose/models/matchModel"
 import AppErr from "../../utility/AppError";
 
 export default {
-    createTournament: async (_parent:never, { input }: Args) => {
+    createTournament: async (_parent:never, { input }: Args, {user}: MyContext) => {
+      if(user?.role === "Admin")
+        {
+
         if('minTeams' in input){
           let newTournament: Tournament = {
             name: input.name ? input.name : "",
@@ -20,15 +23,25 @@ export default {
         } else {
           return null;
         }
+      }
+      throw new AppErr("Not Authorized", 401)
       },
-      deleteTournament: async (_parent:never, { id }:Args) => {
+      deleteTournament: async (_parent:never, { id }:Args, {user}: MyContext) => {
+        if(user?.role === "Admin")
+        {
+
         let deletedTournament = await TournamentModel.findByIdAndDelete(id)
         if (deletedTournament === null) {
           return false; 
         }
         return true;
+      }
+      throw new AppErr("Not Authorized", 401)
     },
-    updateTournament: async (_parent: never, { id, input }:Args) => {
+    updateTournament: async (_parent: never, { id, input }:Args, {user}: MyContext) => {
+      if(user?.role === "Admin")
+        {
+
         if('minTeams' in input){
         let tournament = await TournamentModel.findByIdAndUpdate(id, input, {
             new:true,
@@ -36,8 +49,12 @@ export default {
         })
           return tournament; 
         }
+      }
+      throw new AppErr("Not Authorized", 401)
     },
-    generateMatches: async (_parent: never, { id}:Args) => {
+    generateMatches: async (_parent: never, { id}:Args, {user}: MyContext) => {
+      if(user?.role === "Admin")
+      {
 
       let tournament = await TournamentModel.findById(id)
       let teamAmount = 0
@@ -59,10 +76,7 @@ export default {
          matchesPerStage.push(matchAmount)
          stagesNeeded ++
        }
-
-        console.log(`Teams: ${teamAmount}  Stages: ${stagesNeeded}  Matches per Stage: ${matchesPerStage}`) 
       
-
       let matchArray = [];
 
       let teamsLeft = tournament?.teams ? tournament?.teams : []
@@ -120,9 +134,16 @@ export default {
           runValidators: true
       })
         return updatedTournament; 
-      },
+      }
 
-      addTeamToTournament:  async (_parent: never, { id, input}:Args) => {
+      throw new AppErr("Not Authorized", 401)
+
+    },
+
+      addTeamToTournament:  async (_parent: never, { id, input}:Args, {user}: MyContext) => {
+
+        if(user?.role === "Admin")
+        {
         
         if("teamID" in input)
         {
@@ -156,8 +177,9 @@ export default {
         }
         }
 
-        
-    
+        throw new AppErr("Not Authorized", 401)
+      }
+      
     }
 
 

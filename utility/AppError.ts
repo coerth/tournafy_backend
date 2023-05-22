@@ -1,3 +1,4 @@
+import logger from "./Logger"
 
 
 class AppErr implements Error {
@@ -14,6 +15,7 @@ class AppErr implements Error {
         this.message = `${statusCode}`.startsWith("4") ? "fail" : "error"
         this.isOperational = true;
         Error.captureStackTrace(this, this.constructor)
+        logger.error(this)
     }
 }
 

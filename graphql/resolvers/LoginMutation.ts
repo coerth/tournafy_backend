@@ -13,6 +13,8 @@ import {
   hasAccess,
 } from "../../utility/Security";
 import PlayerModel from "../../mongoose/models/playerModel";
+import logger from "../../utility/Logger"
+
 
 export default {
   register: async (_parent: never, { input }: Args) => {
@@ -37,60 +39,41 @@ export default {
   },
 
   sign_in: async (_parent: never, { input }: Args) => {
-    if ("email" in input && "password" in input) {
-      let player = await PlayerModel.findOne({ email: input.email });
+    try{
 
-      if (
-        !player ||
-        !comparePasswords(
-          input.password,
-          player.hash_password ? player.hash_password : ""
-        )
-      ) {
-        throw new AppError(
-          "Authentication failed. Invalid user or password.",
-          401
-        );
-      } else {
-        player.hash_password = ""
-        let adminAccess = player.role == "Admin" ? true : false
-
-        return {
-          token: signJWT({
-            _id: player.get("id"),
-            name: player.get("name"),
-            email: player.get("email"),
-            role: player.get("role"),
-          } as Player),
-          player: player,
-          adminAccess
-        };
-      }
-    }
-  },
-  /* admin_access: async (_parent: never, {token}: MyContext) => {
-    if(token)
-    {
-      return hasAccess("Admin", token)
-    }
-
-  } */
-
-  /* updateUser: async (
-    _parent: never,
-    { id, input }: Args,
-    { user }: MyContext
-  ) => {
-    if (user != null && id == user._id) {
-      if ("fullName" in input) {
-        let updatedUser = await UserModel.findByIdAndUpdate(id, input, {
-          new: true,
-          runValidators: true,
-        });
-        return updatedUser;
-      }
-    } else {
-      throw new AppError("Authentication failed. Invalid user", 401);
-    }
-  }, */
+      if ("email" in input && "password" in input) {
+        let player = await PlayerModel.findOne({ email: input.email });
+        
+        if (
+          !player ||
+          !comparePasswords(
+            input.password,
+            player.hash_password ? player.hash_password : ""
+            )
+            ) {
+              throw new AppError(
+                "Authentication failed. Invalid email or password.",
+                401
+                );
+              } else {
+                player.hash_password = ""
+                let adminAccess = player.role == "Admin" ? true : false
+                
+                return {
+                  token: signJWT({
+                    _id: player.get("id"),
+                    name: player.get("name"),
+                    email: player.get("email"),
+                    role: player.get("role"),
+                  } as Player),
+                  player: player,
+                  adminAccess
+                };
+              }
+            }
+          }
+          catch(err){
+            logger.error(err)
+          }
+          },
 };

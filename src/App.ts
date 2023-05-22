@@ -11,18 +11,13 @@ import matchRouter from '../mongoose/routes/matchRoute'
 import tournamentRouter from '../mongoose/routes/TournamentRoute'
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
-// The following 2 imports are for reliable shutdown of the server.
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import http from 'http';
 import Query from '.././graphql/resolvers/Query';
 import Mutation from '../graphql/resolvers/Mutation';
 import typeDefs from '../graphql/graphql_schema';
 import cors from 'cors'
-import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
-import {Jwt} from "jsonwebtoken"
-import userRouter from '../mongoose/routes/loginRoute';
 import { MyContext } from '../types/types';
-
 import cookieParser from 'cookie-parser' 
 import { verifyJWT } from '../utility/Security';
 import loginRouter from '../mongoose/routes/loginRoute';

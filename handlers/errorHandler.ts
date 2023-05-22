@@ -13,3 +13,4 @@ export const globalErrorHandler = (err: AppErr, req: Request, res: Response, nex
         status: status,
     })
   }
+

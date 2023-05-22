@@ -1,5 +1,6 @@
 import { Args, MyContext, Player } from "../../types/types";
 import PlayerModel from '../../mongoose/models/playerModel'
+import AppErr from "../../utility/AppError";
 
 
 export default {
@@ -17,17 +18,23 @@ export default {
           return null;
         }
       }, */
-      deletePlayer: async (_parent:never, { id }:Args, {token}:MyContext) => {
+      deletePlayer: async (_parent:never, { id }:Args, {user}:MyContext) => {
+        if(user?.role === "Admin")
+        {
 
-        console.log(token)
 
         let deletedPlayer = await PlayerModel.findByIdAndDelete(id)
         if (deletedPlayer === null) {
           return false; 
         }
         return true;
+      }
+      throw new AppErr("Not Authorized", 401)
     },
-    updatePlayer: async (_parent: never, { id, input }:Args) => {
+    updatePlayer: async (_parent: never, { id, input }:Args, {user}:MyContext) => {
+
+      if(user?.role === "Admin")
+      {
 
         if('gamerTag' in input){
         let player = await PlayerModel.findByIdAndUpdate(id, input, {
@@ -36,6 +43,7 @@ export default {
         })
           return player; 
         }
+      }
+      throw new AppErr("Not Authorized", 401)
     }
-
 }
