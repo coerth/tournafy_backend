@@ -36,3 +36,15 @@ export function comparePasswords(password: string, hashedPassword: string)
 {
    return bcrypt.compareSync(password, hashedPassword)
 }
+
+export function hasAccess(role: string, token: any)
+{
+    const decode = jwt.verify(token, process.env.REACT_APP_TOKEN as jwt.Secret) as User
+
+    if(decode.role == role)
+    {
+        return true
+    }
+
+    return false
+}

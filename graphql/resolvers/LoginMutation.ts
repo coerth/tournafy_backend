@@ -1,6 +1,8 @@
 import {
   Args,
 
+  MyContext,
+
   Player,
 } from "../../types/types";
 import AppError from "../../utility/AppError";
@@ -8,6 +10,7 @@ import {
   generateHashedPassword,
   comparePasswords,
   signJWT,
+  hasAccess,
 } from "../../utility/Security";
 import PlayerModel from "../../mongoose/models/playerModel";
 
@@ -50,7 +53,7 @@ export default {
         );
       } else {
         player.hash_password = ""
-        
+        let adminAccess = player.role == "Admin" ? true : false
 
         return {
           token: signJWT({
@@ -59,11 +62,15 @@ export default {
             email: player.get("email"),
             role: player.get("role"),
           } as Player),
-          player: player
+          player: player,
+          adminAccess
         };
       }
     }
   },
+  admin_access: async (_parent: never, { token }: Args) => {
+    return hasAccess("Admin", token)
+  }
 
   /* updateUser: async (
     _parent: never,

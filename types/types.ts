@@ -49,6 +49,7 @@ export type User = {
 export type Args = {
   id: string;
   input: PlayerInput | TeamInput | MatchInput | TournamentInput | RegisterInput | AddTeamInput;
+  token: string;
 };
 
 export type PlayerInput = {

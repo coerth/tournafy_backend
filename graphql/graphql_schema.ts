@@ -43,6 +43,7 @@ const typeDefs = `#graphql
   type SignedIn {
     token: String!
     player: Player
+    adminAccess: Boolean
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -77,6 +78,7 @@ const typeDefs = `#graphql
     addTeamToTournament(id: ID!, input: AddTeamInput!): Tournament
     register(input: RegisterInput!): Player
     sign_in(input: SignInInput!): SignedIn
+    admin_access(token: String!): Boolean
   }
 
   input PlayerInput {
