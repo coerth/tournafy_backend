@@ -96,10 +96,10 @@ const typeDefs = `#graphql
   }
 
   input MatchInput {
-    location: String!,
+    location: String,
     winner: ID,
     score: [Int],
-    stage: Int
+    stage: Int!
     teams: [ID]
   }
 
