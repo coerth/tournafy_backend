@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import Tournament from "../models/tournamentModel";
 import catchAsync from "../../utility/CatchAsync"
+import AppError from "../../utility/AppError";
+import { verifyJWT } from "../../utility/Security";
 
 export const getTournaments = catchAsync( async (req: Request, res: Response) => {
 
@@ -32,7 +34,10 @@ export const getTournament = catchAsync( async (req: Request, res: Response) => 
 });
 
 export const updateTournament = catchAsync( async (req: Request, res: Response) => {
-
+    const token = req.headers.authorization
+    const decoded = verifyJWT(token)
+    if(decoded?.role === "Admin" || decoded?.role === "API")
+    {
 
         const tournament = Tournament.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
@@ -45,10 +50,15 @@ export const updateTournament = catchAsync( async (req: Request, res: Response) 
                 status: "success",
                 tournament: tournament,
             })
-    
+        }
+        throw new AppError("Not Authorized.", 401)
 })
 
 export const deleteTournament = catchAsync( async (req: Request, res: Response) => {
+    const token = req.headers.authorization
+    const decoded = verifyJWT(token)
+    if(decoded?.role === "Admin" || decoded?.role === "API")
+    {
 
     
 
@@ -60,11 +70,15 @@ export const deleteTournament = catchAsync( async (req: Request, res: Response) 
                 status: "success",
                 message: "Tournament Deleted"
             })
-    
+        }
+        throw new AppError("Not Authorized.", 401)
 })
 
 export const createTournament = catchAsync( async (req: Request, res: Response) => {
-
+    const token = req.headers.authorization
+    const decoded = verifyJWT(token)
+    if(decoded?.role === "Admin" || decoded?.role === "API")
+    {
         const jsonData = req.body;
         
         const newTournament = await Tournament.create(jsonData)
@@ -74,4 +88,6 @@ export const createTournament = catchAsync( async (req: Request, res: Response) 
                 status: "success",
                 Tournament: newTournament
             })    
+        }
+        throw new AppError("Not Authorized.", 401)
 })
